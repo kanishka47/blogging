@@ -9,7 +9,10 @@
   "devDependencies": {
     "axios": "^0.15.2",
     "bootstrap-sass": "^3.3.7",
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.8",
     "jquery": "^3.1.0",
+    "laravel-elixir": "^6.0.0-18",
     "laravel-mix": "^0.5.0",
     "lodash": "^4.16.2",
     "vue": "^2.0.1"
