@@ -214,8 +214,9 @@ class AdminUsersController extends Controller
 
         $user = User::findOrFail($id);
 
-
+       if($user->photo!=NULL) {
         unlink(public_path() . $user->photo->file);
+    }
 
 
         $user->delete();
