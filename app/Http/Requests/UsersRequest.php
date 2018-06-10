@@ -29,7 +29,7 @@ class UsersRequest extends FormRequest
              'email'=>'required',
             'is_active'=>'required',
             'role_id'=>'required',
-            'password'=>'required',
+            'password'=>'required'
         ];
     }
 }
