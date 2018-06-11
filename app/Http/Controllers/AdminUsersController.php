@@ -119,7 +119,7 @@ class AdminUsersController extends Controller
     {
         //
 
-        return view('admin.uses.show');
+      //  return view('admin.users.show');
 
 
     }
