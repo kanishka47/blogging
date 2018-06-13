@@ -14,7 +14,16 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    @if($st==1)
+
+                            <a href="{{route('posts.index')}}">Admin Page</a>
+
+                        @else
+
+                            <a href="{{route('posts.index',6)}}">View Posts</a>
+
+                        @endif
+
                 </div>
             </div>
         </div>

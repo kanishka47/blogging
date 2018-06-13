@@ -24,7 +24,7 @@
     <hr>
 
     <!-- Preview Image -->
-    <img class="img-responsive" src="{{$post->photo ? $post->photo->file : 'http://placehold.it/900x400'}}" alt="">
+    <img class="img-responsive" src="{{$post->photo ? asset($post->photo->file) : 'http://placehold.it/900x400'}}" alt="">
 
     <hr>
 
@@ -59,7 +59,7 @@
 
 
             <div class="form-group">
-                {!! Form::label('body', 'Body:') !!}
+                {!! Form::label('body', 'Comment:') !!}
                 {!! Form::textarea('body', null, ['class'=>'form-control','rows'=>3])!!}
             </div>
 
@@ -97,6 +97,43 @@
                     <p>{{$comment->body}}</p>
 
 
+                    <div class="comment-reply-container">
+
+
+                        <button class="toggle-reply btn btn-primary pull-right">Reply</button>
+
+
+                        <div class="comment-reply col-sm-6">
+
+
+                            {!! Form::Open(['method'=>'Post','action'=>'CommentRepliesController@store']) !!}
+
+                            <input type="hidden" name="comment_id"  value="{{$comment->id}}">
+                            <div class="form group">
+                                {!! Form::label('body','Reply') !!}
+
+                                {!! Form::text('body',null,['class'=>'form-control','rows'=>1]) !!}
+
+                            </div>
+
+                            <div class="form-group">
+                                <br>
+
+                                {!! Form::submit('Submit',['class'=>'btn btn-primary']) !!}
+
+                            </div>
+
+                            {!! Form::Close() !!}
+
+
+                        </div>
+
+                    </div>
+                    <!-- End Nested Comment -->
+
+
+
+
 
                 @if(count($comment->replies) > 0)
 
@@ -111,52 +148,17 @@
                             <!-- Nested Comment -->
                                 <div id="nested-comment" class=" media">
                                     <a class="pull-left" href="#">
-                                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                                        <img class="media-object" src="{{$reply->photo?asset($reply->photo):'http://placehold.it/64x64'}}" alt="">
                                     </a>
                                     <div class="media-body">
-                                        <h4 class="media-heading"{{$reply->author}}
+                                        <h4 class="media-heading">{{$reply->author}}
                                         <small>{{$reply->created_at->diffForHumans()}}</small>
                                         </h4>
                                         <p>{{$reply->body}}</p>
                                     </div>
 
 
-                                    <div class="comment-reply-container">
 
-
-                                        <button class="toggle-reply btn btn-primary pull-right">Reply</button>
-
-
-                                        <div class="comment-reply col-sm-6">
-
-
-                                            {!! Form::Open(['method'=>'Post','action'=>'CommentRepliesController@store']) !!}
-
-                                            <input type="hidden" name="comment_id"  value="{{$comment->id}}">
-                                            <div class="form group">
-                                                {!! Form::label('body','Reply') !!}
-
-                                                {!! Form::text('body',null,['class'=>'form-control','rows'=>1]) !!}
-
-                                            </div>
-
-                                            <div class="form-group">
-                                                <br>
-
-                                                {!! Form::submit('Submit',['class'=>'btn btn-primary']) !!}
-
-                                            </div>
-
-                                            {!! Form::Close() !!}
-
-
-                                        </div>
-
-                                    </div>
-                                    <!-- End Nested Comment -->
-
-
-                                </div>
 
                                @else
 
@@ -171,7 +173,7 @@
 
 
 
-
+                                </div>
 
                 </div>
             </div>

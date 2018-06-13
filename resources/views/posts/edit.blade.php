@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.author')
 
 
 @section('content')
@@ -12,7 +12,7 @@
 
         <div class="col-sm-3">
 
-            <img height="80" src="{{$post->photo ? asset($post->photo->file): 'http://placehold.it/400x400'}}" alt="" class="img responsive">
+            <img height="80"  src="{{$post->photo ? asset($post->photo->file): 'http://placehold.it/400x400'}}" alt="" class="img responsive">
 
 
         </div>
@@ -32,11 +32,10 @@
         </div>
 
 
-        <div class="form-group">
-            {!! Form::label('photo_id', 'Photo:') !!}
-            {!! Form::file('photo_id', null,['class'=>'form-control'])!!}
-        </div>
-
+            <div class="form-group">
+                {!! Form::label('photo_id', 'Photo:') !!}
+                {!! Form::file('photo_id', null, ['class'=>'form-control'])!!}
+            </div>
 
         <div class="form-group">
             {!! Form::label('body', 'Description:') !!}

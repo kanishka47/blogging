@@ -108,7 +108,10 @@ class AdminPostsController extends Controller
     public function update(Request $request, $id)
     {
         //
+       // return $request->all();
         $input = $request->all();
+
+
 
         if($file= $request->file('photo_id')){
 
@@ -122,9 +125,12 @@ class AdminPostsController extends Controller
         }
 
 
+
+
+
         Auth::user()->posts()->whereId($id)->first()->update($input);
 
-        return redirect('/admin/posts');
+        return  redirect('admin/posts');
 
     }
 
